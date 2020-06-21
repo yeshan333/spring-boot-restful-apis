@@ -8,5 +8,5 @@ import java.util.List;
 public interface InformationService {
     void insertInfOne(String result);
     void insertInfMul(InformationEntity informationEntity);
-    List<InformationEntity> findLatestInf();
+    InformationEntity findLatestInf();
 }

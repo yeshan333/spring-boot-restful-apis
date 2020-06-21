@@ -2,244 +2,250 @@ package com.example.bodymanagement.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.util.TypeUtils;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
 
 @Data
 @Document(value = "Data")
 
-public class InformationEntity {
+@NoArgsConstructor
+public class InformationEntity implements Serializable {
 
     @Id
-    @JsonProperty
+    @JSONField(name = "ID")
     private String ID;
-    @JsonProperty
+    @JSONField(name = "Height")
     private String Height;
-    @JsonProperty
+    @JSONField(name = "Gender")
     private String Gender;
-    @JsonProperty
+
+    @JSONField(name = "Age")
     private String Age;
-    @JsonProperty
+    @JSONField(name = "DateTime")
     private String DateTime;
-    @JsonProperty
+    @JSONField(name = "Weight")
     private String Weight;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Weight")
     private String Lower_Limit_Weight;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Weight")
     private String Upper_Limit_Weight;
-    @JsonProperty
+    @JSONField(name = "TBW")
     private String TBW;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_TBW")
     private String Lower_Limit_TBW;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_TBW")
     private String Upper_Limit_TBW;      //11
-    @JsonProperty
+    @JSONField(name = "ICW")
     private String ICW;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_ICW")
     private String Lower_Limit_ICW;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_ICW")
     private String Upper_Limit_ICW;
-    @JsonProperty
+    @JSONField(name = "ECW")
     private String ECW;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_ECW")
     private String Lower_Limit_ECW;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_ECW")
     private String Upper_Limit_ECW;
-    @JsonProperty
+    @JSONField(name = "Protein")
     private String Protein;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Protein")
     private String Lower_Limit_Protein;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Protein")
     private String Upper_Limit_Protein;   //20
-    @JsonProperty
+    @JSONField(name = "Mineral")
     private String Mineral;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Mineral")
     private String Lower_Limit_Mineral;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Mineral")
     private String Upper_Limit_Mineral;
-    @JsonProperty
+    @JSONField(name = "BFM")
     private String BFM;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_BFM")
     private String Lower_Limit_BFM;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_BFM")
     private String Upper_Limit_BFM;
-    @JsonProperty
+    @JSONField(name = "SLM")
     private String SLM;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_SLM")
     private String Lower_Limit_SLM;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_SLM")
     private String Upper_Limit_SLM;
-    @JsonProperty
+    @JSONField(name = "FFM")
     private String FFM;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_FFM")
     private String Lower_Limit_FFM;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_FFM")
     private String Upper_Limit_FFM;
-    @JsonProperty
+    @JSONField(name = "SMM")
 
     private String SMM;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_SMM")
     private String Lower_Limit_SMM;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_SMM")
     private String Upper_Limit_SMM;
-    @JsonProperty
+    @JSONField(name = "BMI")
     private String BMI;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_BMI")
     private String Lower_Limit_BMI;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_BMI")
     private String Upper_Limit_BMI;
-    @JsonProperty//38
+    @JSONField(name = "Percent_Body_Fat")
     private String Percent_Body_Fat;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Percent_Body_Fat")
     private String Lower_Limit_Percent_Body_Fat;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Percent_Body_Fat")
     private String Upper_Limit_Percent_Body_Fat;
-    @JsonProperty
+    @JSONField(name = "FFM_of_Right_Arm")
     private String FFM_of_Right_Arm;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_FFM_of_Right_Arm")
     private String Lower_Limit_FFM_of_Right_Arm;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_FFM_of_Right_Arm")
     private String Upper_Limit_FFM_of_Right_Arm;
-    @JsonProperty
+    @JSONField(name = "FFM_Persents_of_Right_Arm")
     private String FFM_Persents_of_Right_Arm;
-    @JsonProperty
+    @JSONField(name = "FFM_of_Left_Arm")
     private String FFM_of_Left_Arm;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_FFM_of_Left_Arm")
     private String Lower_Limit_FFM_of_Left_Arm;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_FFM_of_Left_Arm")
     private String Upper_Limit_FFM_of_Left_Arm;
-    @JsonProperty
+    @JSONField(name = "FFM_Persents_of_Left_Arm")
     private String FFM_Persents_of_Left_Arm;
-    @JsonProperty
+    @JSONField(name = "FFM_of_Trunk")
     private String FFM_of_Trunk;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_FFM_of_Trunk")
     private String Lower_Limit_FFM_of_Trunk;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_FFM_of_Trunk")
     private String Upper_Limit_FFM_of_Trunk;   //52
-    @JsonProperty
+    @JSONField(name = "FFM_Persents_of_Trunk")
     private String FFM_Persents_of_Trunk;
-    @JsonProperty
+    @JSONField(name = "FFM_of_Right_Leg")
     private String FFM_of_Right_Leg;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_FFM_of_Right_Leg")
     private String Lower_Limit_FFM_of_Right_Leg;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_FFM_of_Right_Leg")
     private String Upper_Limit_FFM_of_Right_Leg;
-    @JsonProperty
+    @JSONField(name = "FFM_Persents_of_Right_Leg")
     private String FFM_Persents_of_Right_Leg;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_FFM_of_Left_Leg")
     private String Upper_Limit_FFM_of_Left_Leg;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Upper_Limit_FFM_of_Left_Leg")
     private String Lower_Limit_Upper_Limit_FFM_of_Left_Leg;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Upper_Limit_FFM_of_Left_Leg")
     private String Upper_Limit_Upper_Limit_FFM_of_Left_Leg;
-    @JsonProperty
+    @JSONField(name = "FFM_Persents_of_Left_Leg")
     private String FFM_Persents_of_Left_Leg;
-    @JsonProperty
+    @JSONField(name = "ECW_TBW")
     private String ECW_TBW;
-    @JsonProperty
+    @JSONField(name = "BFM_of_Right_Arm")
     private String BFM_of_Right_Arm;
-    @JsonProperty
+    @JSONField(name = "BFM_Persents_of_Right_Arm")
     private String BFM_Persents_of_Right_Arm;
-    @JsonProperty
+    @JSONField(name = "BFM_of_Left_Arm")
     private String BFM_of_Left_Arm;
-    @JsonProperty
+    @JSONField(name = "BFM_Persents_of_Left_Arm")
     private String BFM_Persents_of_Left_Arm;
-    @JsonProperty
+    @JSONField(name = "BFM_of_Trunk")
     private String BFM_of_Trunk;
-    @JsonProperty
+    @JSONField(name = "BFM_Persents_of_Trunk")
     private String BFM_Persents_of_Trunk;
-    @JsonProperty
+    @JSONField(name = "BFM_of_Right_Leg")
     private String BFM_of_Right_Leg;
-    @JsonProperty
+    @JSONField(name = "BFM_Persents_of_Right_Leg")
     private String BFM_Persents_of_Right_Leg;     //70
-    @JsonProperty
+    @JSONField(name = "BFM_of_Left_Leg")
     private String BFM_of_Left_Leg;
-    @JsonProperty
+    @JSONField(name = "BFM_Persents_of_Left_Leg")
 
     private String BFM_Persents_of_Left_Leg;
-    @JsonProperty
+    @JSONField(name = "Inbody_Score")
     private String Inbody_Score;
-    @JsonProperty
+    @JSONField(name = "Target_Weight")
     private String Target_Weight;
-    @JsonProperty
+    @JSONField(name = "Weight_Control")
     private String Weight_Control;
-    @JsonProperty
+    @JSONField(name = "BFM_Control")
     private String BFM_Control;
-    @JsonProperty
+    @JSONField(name = "FFM_Control")
     private String FFM_Control;
-    @JsonProperty
+    @JSONField(name = "Basal_Metabolic_Rate")
     private String Basal_Metabolic_Rate;
-    @JsonProperty
+    @JSONField(name = "Waist_Hip_Ratio")
     private String Waist_Hip_Ratio;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Waist_Hip_Ratio")
     private String Lower_Limit_Waist_Hip_Ratio;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Waist_Hip_Ratio")
     private String Upper_Limit_Waist_Hip_Ratio;   //81
-    @JsonProperty
+    @JSONField(name = "Visceral_Fat_Level")
     private String Visceral_Fat_Level;
-    @JsonProperty
+    @JSONField(name = "Obesity_Degree")
     private String Obesity_Degree;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Obesity_Degree")
     private String Lower_Limit_Obesity_Degree;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Obesity_Degree")
     private String Upper_Limit_Obesity_Degree;
-    @JsonProperty
+    @JSONField(name = "Body_Cell_Mass")
     private String Body_Cell_Mass;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Body_Cell_Mass")
     private String Lower_Limit_Body_Cell_Mass;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Body_Cell_Mass")
     private String Upper_Limit_Body_Cell_Mass;
-    @JsonProperty
+    @JSONField(name = "Arm_Circumference")
     private String Arm_Circumference;
-    @JsonProperty
+    @JSONField(name = "Arm_Muscle_Circumference")
     private String Arm_Muscle_Circumference;
-    @JsonProperty
+    @JSONField(name = "Bone_Mineral_Content")
     private String Bone_Mineral_Content;
-    @JsonProperty
+    @JSONField(name = "Lower_Limit_Bone_Mineral_Content")
     private String Lower_Limit_Bone_Mineral_Content;
-    @JsonProperty
+    @JSONField(name = "Upper_Limit_Bone_Mineral_Content")
     private String Upper_Limit_Bone_Mineral_Content;   //93
-    @JsonProperty
+    @JSONField(name = "RA_5K")
     private String RA_5K;
-    @JsonProperty
+    @JSONField(name = "LA_5K")
     private String LA_5K;
-    @JsonProperty
+    @JSONField(name = "TR_5K")
     private String TR_5K;
-    @JsonProperty
+    @JSONField(name = "RL_5K")
     private String RL_5K;
-    @JsonProperty
+    @JSONField(name = "LL_5K")
     private String LL_5K;
-    @JsonProperty
+    @JSONField(name = "RA_50K")
     private String RA_50K;
-    @JsonProperty
+    @JSONField(name = "LA_50K")
     private String LA_50K;
-    @JsonProperty
+    @JSONField(name = "TR_50K")
     private String TR_50K;
-    @JsonProperty
+    @JSONField(name = "RL_50K")
     private String RL_50K;
-    @JsonProperty
+    @JSONField(name = "LL_50K")
     private String LL_50K;
-    @JsonProperty
+    @JSONField(name = "Weight")
     private String RA_500K;
-    @JsonProperty
+    @JSONField(name = "LA_500K")
     private String LA_500K;
-    @JsonProperty
+    @JSONField(name = "TR_500K")
     private String TR_500K;
-    @JsonProperty
+    @JSONField(name = "RL_500K")
     private String RL_500K;     //107
-    @JsonProperty
+    @JSONField(name = "LL_500K")
     private String LL_500K;
-    @JsonProperty
+    @JSONField(name = "Gestational_Period")
     private String Gestational_Period;
-    @JsonProperty
+    @JSONField(name = "Waist")
     private String Waist; //
-    @JsonProperty
+    @JSONField(name = "hipshot")
     private String hipshot;
-    @JsonProperty
+    @JSONField(name = "PrePregnancy_Weight")
     private String PrePregnancy_Weight;
-
 
 }

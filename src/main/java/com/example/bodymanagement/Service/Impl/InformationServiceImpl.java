@@ -24,7 +24,7 @@ public class InformationServiceImpl implements InformationService {
     }
 
     @Override
-    public List<InformationEntity> findLatestInf() {
+    public InformationEntity findLatestInf() {
         return informationRepository.findLatestInf();
     }
 }

@@ -2,13 +2,16 @@ package com.example.bodymanagement.Controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
+
+
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.example.bodymanagement.Service.InformationService;
 import com.example.bodymanagement.Service.UserService;
 import com.example.bodymanagement.entity.InformationEntity;
 import com.example.bodymanagement.entity.UserEntity;
+//import net.sf.json.JSONArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.StringUtils;
@@ -58,10 +61,13 @@ public class FindController {
         String Student_name=(String) jsonResult.get("student_name");
         return userService.findUser(Id,Student_code,Student_name);
     }
+
     @RequestMapping("/api/user/findLatestInf")
     @ResponseBody
-    public List<InformationEntity> findLatestInf(){
+    public String findLatestInf(){
 
-        return informationService.findLatestInf();
+//        return jsonArray.toString();
+        String  result= JSON.toJSONString(informationService.findLatestInf());
+        return result;
     }
 }
