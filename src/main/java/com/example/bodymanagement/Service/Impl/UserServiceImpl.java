@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String insertone(String result) {
-        try {
+
             JSONObject jsonObject = (JSONObject) JSON.parse(result);
 //        JSONObject jsonObject = JSONObject.parseObject(json);
 
@@ -50,11 +50,8 @@ public class UserServiceImpl implements UserService {
             userEntity.setStudent_code(jsonObject.get("student_code").toString());
             userEntity.setStudent_name(jsonObject.get("student_name").toString());
             userEntity.setRole(jsonObject.get("Role").toString());
-            userReposity.insertOne(userEntity);
-        } catch (Exception e) {
-            return JSON.toJSONString(ResultVO.result(ResultEnum.USER_NO_ACCESS,false));
-        }
-        return JSON.toJSONString(ResultVO.result(ResultEnum.USER_NO_ACCESS,false));
+
+        return userReposity.insertOne(userEntity);
     }
 
     /**

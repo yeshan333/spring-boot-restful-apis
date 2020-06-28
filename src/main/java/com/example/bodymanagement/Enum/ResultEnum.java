@@ -14,6 +14,7 @@ public enum  ResultEnum {
     USER_LOGOUT_SUCCESS(20005,"用户登出成功"),
     TOKEN_IS_BLACKLIST(20006,"此token为黑名单"),
     LOGIN_IS_OVERDUE(20007,"登录已失效"),
+    LOGIN_IS_EXIST(20009,"账号已存在"),
     ;
 
     private Integer code;

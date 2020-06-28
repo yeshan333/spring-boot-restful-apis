@@ -110,7 +110,7 @@ public class UserRepositoryImpl implements UserReposity {
             mongoTemplate.save(result, "User_collection");
            return JSON.toJSONString(ResultVO.result(ResultEnum.SUCCESS,true));
         }else {
-            return JSON.toJSONString(ResultVO.result(ResultEnum.USER_NO_ACCESS,false));
+            return JSON.toJSONString(ResultVO.result(ResultEnum.LOGIN_IS_EXIST,false));
         }
     }
 
