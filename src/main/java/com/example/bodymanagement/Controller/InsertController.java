@@ -13,16 +13,20 @@ public class InsertController {
     @Autowired
     @Qualifier("InformationService")
     private InformationService informationService;
-    @RequestMapping(value = "/api/user/insertone/{student_code}",method = RequestMethod.POST)
+
+
+    /**
+     * 根据student_name查询是否存在，存在则创建/插入student_name 表
+     * @param result
+     * @param student_name
+     * @return
+     */
+    /**
+     *个人表示疑似有问题
+     */
+    @RequestMapping(value = "/insertone/{student_name}",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public String insertone(@RequestBody String result){
-        informationService.insertInfOne(result);
-        return "ok";
+    public String insertone(@RequestBody String result,@PathVariable("student_name")String student_name){
+        return informationService.insertInfOne(result,student_name);
     }
-//    @RequestMapping(value = "/api/user/insertone",method = RequestMethod.POST)
-//    @ResponseBody
-//    public String insertone(@RequestBody String result){
-//        informationService.insertInfOne(result);
-//        return "ok";
-//    }
 }

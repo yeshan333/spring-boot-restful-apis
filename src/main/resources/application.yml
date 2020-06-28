@@ -1,8 +1,15 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/bodymanagement
 
+
+logging:
+  file:
+    path: /bodymanagement
+  pattern:
+    console: %d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n
+    file: %d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n

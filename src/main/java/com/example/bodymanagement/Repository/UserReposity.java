@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public interface UserReposity{
+public interface UserReposity {
      List<UserEntity> findAll();
 
     List<UserEntity> findone(String id,String student_code,String student_name);
@@ -16,4 +16,14 @@ public interface UserReposity{
     void deleteOneUserById(String id);
 
     void deleteMulUserById(String[] id);
+
+    boolean findOneUser(String user_name,String pass_word);
+
+    UserEntity findOneById(String id);
+
+    boolean findOneByUserName(String User_name);
+
+    String insertOne(UserEntity result);
+
+    void updateUserById(String id,UserEntity userEntity);
 }

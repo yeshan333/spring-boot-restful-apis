@@ -1,11 +1,18 @@
 package com.example.bodymanagement.Repository.Impl;
 
+import com.alibaba.fastjson.JSON;
+import com.example.bodymanagement.Enum.ResultEnum;
+import com.example.bodymanagement.Enum.VO.ResultVO;
 import com.example.bodymanagement.Repository.UserReposity;
 import com.example.bodymanagement.entity.UserEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 
@@ -15,12 +22,13 @@ import java.util.regex.Pattern;
 
 @Service("UserReposity")
 public class UserRepositoryImpl implements UserReposity {
+    private static Logger logger = LoggerFactory.getLogger(InformantionRepositoryImpl.class);
     @Autowired
     private MongoTemplate mongoTemplate;
 
     @Override
     public List<UserEntity> findAll() {
-        return mongoTemplate.findAll(UserEntity.class);
+        return mongoTemplate.findAll(UserEntity.class,"User_collection");
     }
 
     @Override
@@ -58,5 +66,62 @@ public class UserRepositoryImpl implements UserReposity {
             query.addCriteria(Criteria.where("id").regex(ids,"i"));
             mongoTemplate.remove(query,UserEntity.class);
         }
+    }
+
+    @Override
+    public boolean findOneUser(String user_name, String pass_word) {
+        Query query=new Query();
+        Criteria criteria=new Criteria();
+        Criteria criteriaA=new Criteria();
+        Criteria criteriaB=new Criteria();
+        criteriaA.and("id").regex(user_name);
+        criteriaB.and("pass_word").regex(pass_word);
+        criteria.andOperator(criteriaA,criteriaB);
+        query.addCriteria(criteria);
+        if (mongoTemplate.findOne(query,UserEntity.class,"User_collection")!=null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public UserEntity findOneById(String id) {
+        Query query=new Query(Criteria.where("user_name").regex(id));
+        return mongoTemplate.findOne(query,UserEntity.class,"User_collection");
+    }
+
+    @Override
+    public boolean findOneByUserName(String User_name) {
+        Query query=new Query(Criteria.where("user_name").regex(User_name));
+        if(mongoTemplate.findOne(query,UserEntity.class,"User_collection")==null){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String  insertOne(UserEntity result) {
+        Query query = new Query();
+        Criteria criteria = new Criteria();
+        criteria.and("user_name").regex(result.getUser_name());
+        query.addCriteria(criteria);
+        if (mongoTemplate.findOne(query, UserEntity.class, "User_collection") == null) {
+            mongoTemplate.save(result, "User_collection");
+           return JSON.toJSONString(ResultVO.result(ResultEnum.SUCCESS,true));
+        }else {
+            return JSON.toJSONString(ResultVO.result(ResultEnum.USER_NO_ACCESS,false));
+        }
+    }
+
+    @Override
+    public void updateUserById(String id, UserEntity userEntity) {
+        Query query=new Query(Criteria.where("id").regex(id));
+        Update update=new Update();
+        update.set("pass_word",userEntity.getPass_word());
+        update.set("student_name",userEntity.getStudent_name());
+        update.set("student_code",userEntity.getStudent_code());
+        update.set("Role",userEntity.getRole());
+        mongoTemplate.updateFirst(query,update,"User_collection");
     }
 }

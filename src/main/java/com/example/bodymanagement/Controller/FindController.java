@@ -4,19 +4,26 @@ package com.example.bodymanagement.Controller;
 import com.alibaba.fastjson.JSON;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.example.bodymanagement.Service.InformationService;
 import com.example.bodymanagement.Service.UserService;
+import com.example.bodymanagement.Unit.CSVWrite;
+import com.example.bodymanagement.Unit.UserNameFormJwtUtils;
 import com.example.bodymanagement.entity.InformationEntity;
 import com.example.bodymanagement.entity.UserEntity;
 //import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -27,47 +34,70 @@ public class FindController {
     @Autowired
     @Qualifier("InformationService")
     private InformationService informationService;
-    @RequestMapping("/api/findalluser")
-    public List<UserEntity> findalluser(){
-        return userService.findAllUser();
+
+    /**
+     *查询所有用户
+     * @return
+     */
+    @RequestMapping(value = "/api/admin/findalluser",produces = {"application/json;charset=UTF-8"})
+    public String findalluser() {
+        String json=JSON.toJSONString(userService.findAllUser());
+        return json;
     }
 
     /**
      * 模糊查找用户
+     *
+     * @param result
+     * @return
      * @Author Mu_hui
+     */
+    @RequestMapping(value ="/api/admin/findone",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String findone(@RequestBody String result) {
+        JSONObject jsonResult = (JSONObject) JSON.parse(result);
+        String User_name = (String) jsonResult.get("id");
+        String Student_code = (String) jsonResult.get("student_code");
+        String Student_name = (String) jsonResult.get("student_name");
+        String res=JSON.toJSONString(userService.findUser(User_name,Student_code,Student_name));
+        return res;
+    }
+
+    /**
+     * 查找最新插入的信息
+     * @return
+     */
+    @RequestMapping(value = "/api/findLatestInf/{user_name}",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String findLatestInf(@PathVariable("user_name") String user_name) {
+
+        return informationService.findLatestInf(user_name);
+    }
+
+    /**
+     * 查询某个人的所以实验信息
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/api/user/findselfInf",produces ={"application/json;charset=UTF-8"} )
+    @ResponseBody
+    public String findselfInf(HttpServletRequest request){
+        String userName= UserNameFormJwtUtils.GetUserName(request);
+        return informationService.findOneAll(userName);
+    }
+
+    /**
+     * 根据用户锁定表，在根据时间模糊查询
+     * @param request
      * @param result
      * @return
      */
-    @RequestMapping("/api/findone1")
-
-    public String info3(@RequestParam(name="callback",required = false) String callBack){
-        JSONObject map = new JSONObject();
-        map.put("msg","请求成功!");
-        map.put("code","0000");
-        map.put("data","获取到后端数据!");
-        String result = map.toString();
-        if(!StringUtils.isEmpty(callBack)){
-            //如果是json请求，则包裹上回调函数
-            return callBack + "(" + result + ")";
-        }
-        return result;
-    }
-    @RequestMapping("/api/findone")
+    @RequestMapping(value = "/api/user/findselfInfOne",produces ={"application/json;charset=UTF-8"} )
     @ResponseBody
-    public List<UserEntity> findone(@RequestBody String result){
-        JSONObject jsonResult=(JSONObject) JSON.parse(result);
-        String Id=(String) jsonResult.get("id");
-        String Student_code=(String) jsonResult.get("student_code");
-        String Student_name=(String) jsonResult.get("student_name");
-        return userService.findUser(Id,Student_code,Student_name);
-    }
-
-    @RequestMapping("/api/user/findLatestInf")
-    @ResponseBody
-    public String findLatestInf(){
-
-//        return jsonArray.toString();
-        String  result= JSON.toJSONString(informationService.findLatestInf());
-        return result;
+    public String findselfInfOne(HttpServletRequest request,@RequestBody String result){
+        String userName= UserNameFormJwtUtils.GetUserName(request);
+        JSONObject jsonResult = (JSONObject) JSON.parse(result);
+        String dataTime = (String) jsonResult.get("DateTime");
+        return informationService.findselfInfOne(userName,dataTime);
     }
 }

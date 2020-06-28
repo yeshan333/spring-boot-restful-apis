@@ -229,7 +229,7 @@ public class InformationEntity implements Serializable {
     private String RL_50K;
     @JSONField(name = "LL_50K")
     private String LL_50K;
-    @JSONField(name = "Weight")
+    @JSONField(name = "RA_500K")
     private String RA_500K;
     @JSONField(name = "LA_500K")
     private String LA_500K;
