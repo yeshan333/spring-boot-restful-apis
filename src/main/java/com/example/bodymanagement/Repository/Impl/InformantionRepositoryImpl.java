@@ -56,15 +56,11 @@ public class InformantionRepositoryImpl implements InformationRepository {
         Query query = new Query();
         Criteria criteria = new Criteria();
 
-        if (userName != null && !userName.equals("")) {
-            Pattern patternuserName = Pattern.compile("^.*" + userName + ".*$", Pattern.CASE_INSENSITIVE);
-            criteria.and("user_name").regex(String.valueOf(userName), "i");
-        }
-
         if (DataTime != null && !DataTime.equals("")) {
             Pattern patternDataTime = Pattern.compile("^.*" + DataTime + ".*$", Pattern.CASE_INSENSITIVE);
-            criteria.and("student_name").regex(String.valueOf(patternDataTime), "i");
+            criteria.and("DateTime").regex(String.valueOf(DataTime), "i");
         }
+        
         query.addCriteria(criteria);
         return mongoTemplate.find(query, InformationEntity.class,userName);
     }
