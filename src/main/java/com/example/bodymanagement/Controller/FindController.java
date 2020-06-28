@@ -56,7 +56,7 @@ public class FindController {
     @ResponseBody
     public String findone(@RequestBody String result) {
         JSONObject jsonResult = (JSONObject) JSON.parse(result);
-        String User_name = (String) jsonResult.get("id");
+        String User_name = (String) jsonResult.get("user_name");
         String Student_code = (String) jsonResult.get("student_code");
         String Student_name = (String) jsonResult.get("student_name");
         String res=JSON.toJSONString(userService.findUser(User_name,Student_code,Student_name));
