@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 @Service("UserReposity")
 public class UserRepositoryImpl implements UserReposity {
-    private static Logger logger = LoggerFactory.getLogger(InformantionRepositoryImpl.class);
+//    private static Logger logger = LoggerFactory.getLogger(InformantionRepositoryImpl.class);
     @Autowired
     private MongoTemplate mongoTemplate;
 

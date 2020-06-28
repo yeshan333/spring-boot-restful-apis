@@ -20,7 +20,7 @@ public class InformantionRepositoryImpl implements InformationRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    private static Logger logger = LoggerFactory.getLogger(InformantionRepositoryImpl.class);
+//    private static Logger logger = LoggerFactory.getLogger(InformantionRepositoryImpl.class);
 
     @Override
     public List<InformationEntity> findOneAll(String userName) {
