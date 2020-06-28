@@ -60,7 +60,7 @@ public class InformantionRepositoryImpl implements InformationRepository {
             Pattern patternDataTime = Pattern.compile("^.*" + DataTime + ".*$", Pattern.CASE_INSENSITIVE);
             criteria.and("DateTime").regex(String.valueOf(DataTime), "i");
         }
-        
+
         query.addCriteria(criteria);
         return mongoTemplate.find(query, InformationEntity.class,userName);
     }
