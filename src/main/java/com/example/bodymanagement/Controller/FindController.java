@@ -104,8 +104,7 @@ public class FindController {
         String dataTime = (String) jsonResult.get("DateTime");
         return informationService.findselfInfOne(userName,dataTime);
     }
-<<<<<<< HEAD
-=======
+
 
 
     @RequestMapping(value = "/api/admin/finduserinf",produces ={"application/json;charset=UTF-8"} )
@@ -116,5 +115,5 @@ public class FindController {
         String userName = (String) jsonResult.get("user_name");
         return informationService.Adminfinduser(userName);
     }
->>>>>>> 68ad2bd... "修复部分bug"
+
 }

@@ -87,16 +87,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setHeader("token", JwtTokenUtils.TOKEN_PREFIX + token);
 
         JSONObject object = new JSONObject();
-<<<<<<< HEAD
-        object.put("code","20002");
-        object.put("Token",JwtTokenUtils.TOKEN_PREFIX + token);
-=======
+
+
+
         object.put("status","ok");
         object.put("type","account");
 
         object.put("Token",JwtTokenUtils.TOKEN_PREFIX + token);
         object.put("currentAuthority", JwtTokenUtils.getUserRole(token));
->>>>>>> 68ad2bd... "修复部分bug"
+
 
         response.getWriter().write(object.toJSONString());
     }
@@ -106,14 +105,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         JSONObject object = new JSONObject();
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-<<<<<<< HEAD
-        object.put("code","20001");
-        object.put("message","错误");
-=======
         object.put("status","error");
         object.put("type","account");
         object.put("currentAuthority","guest");
->>>>>>> 68ad2bd... "修复部分bug"
+
         response.getWriter().write(object.toJSONString());
     }
 }

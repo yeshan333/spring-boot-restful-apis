@@ -12,10 +12,8 @@ public interface InformationRepository {
     void InsertInfMul(InformationEntity informationEntity);
     InformationEntity findLatestInf(String user_name);
     void deleteInfById(String id,String userName);
-<<<<<<< HEAD
 
-=======
     List<InformationEntity> Adminfinduser(String user_name);
->>>>>>> 68ad2bd... "修复部分bug"
+
     List<InformationEntity> findselfInfOne(String userName,String DataTime);
 }

@@ -47,19 +47,16 @@ public class InformantionRepositoryImpl implements InformationRepository {
 
     @Override
     public void deleteInfById(String id,String userName) {
-<<<<<<< HEAD
-        Query query=new Query(Criteria.where("id").regex(id,"i"));
-=======
+
 
         Query query=new Query(Criteria.where("_id").is(id));
 
->>>>>>> 68ad2bd... "修复部分bug"
+
         mongoTemplate.remove(query,InformationEntity.class,userName);
     }
 
     @Override
-<<<<<<< HEAD
-=======
+
     public List<InformationEntity> Adminfinduser(String user_name) {
         Query query=new Query();
         return mongoTemplate.find(query,InformationEntity.class,user_name);
@@ -67,7 +64,7 @@ public class InformantionRepositoryImpl implements InformationRepository {
 
 
     @Override
->>>>>>> 68ad2bd... "修复部分bug"
+
     public List<InformationEntity> findselfInfOne(String userName, String DataTime) {
         Query query = new Query();
         Criteria criteria = new Criteria();

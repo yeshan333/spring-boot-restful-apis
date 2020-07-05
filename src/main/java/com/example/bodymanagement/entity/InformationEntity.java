@@ -14,23 +14,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 
 @Data
-<<<<<<< HEAD
+
 @Document(value = "Data")
-=======
->>>>>>> a915819... "修复部分bug"
+
 
 @NoArgsConstructor
 public class InformationEntity implements Serializable {
 
     @Id
-<<<<<<< HEAD
-    @JSONField(name = "ID")
-    private String ID;
-=======
     private String id;
     @JSONField(name = "IDCard")
     private String IDCard;
->>>>>>> a915819... "修复部分bug"
+
     @JSONField(name = "Height")
     private String Height;
     @JSONField(name = "Gender")
