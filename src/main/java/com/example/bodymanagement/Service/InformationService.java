@@ -37,4 +37,9 @@ public interface InformationService {
     String deleteInfByid(String id,String userName);
 
     String findselfInfOne(String userName,String DataTime);
+<<<<<<< HEAD
+=======
+
+    String Adminfinduser(String userName);
+>>>>>>> 68ad2bd... "修复部分bug"
 }

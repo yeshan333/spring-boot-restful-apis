@@ -28,7 +28,11 @@ public interface UserService {
      * @param student_name
      * @return
      */
+<<<<<<< HEAD
     List<UserEntity> findUser(String id, String student_code, String student_name);
+=======
+    UserEntity findUser(String id, String student_code, String student_name);
+>>>>>>> 68ad2bd... "修复部分bug"
 
     /**
      * 删除用户

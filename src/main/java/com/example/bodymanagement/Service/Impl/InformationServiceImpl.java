@@ -72,4 +72,15 @@ public class InformationServiceImpl implements InformationService {
         }
         return JSON.toJSONString(informationRepository.findselfInfOne(userName,DataTime));
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public String Adminfinduser(String userName) {
+        if(informationRepository.Adminfinduser(userName)==null){
+            return JSON.toJSONString(ResultVO.result(ResultEnum.FAILURE, false));
+        }
+        return JSON.toJSONString(informationRepository.Adminfinduser(userName));
+    }
+>>>>>>> 68ad2bd... "修复部分bug"
 }

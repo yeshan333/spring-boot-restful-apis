@@ -4,6 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum  ResultEnum {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 68ad2bd... "修复部分bug"
     SUCCESS(10001,"成功"),
     FAILURE(10002,"失败"),
     USER_NEED_AUTHORITIES(20001,"用户未登录"),

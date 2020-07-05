@@ -42,9 +42,13 @@ public class UserServiceImpl implements UserService {
 
             JSONObject jsonObject = (JSONObject) JSON.parse(result);
 //        JSONObject jsonObject = JSONObject.parseObject(json);
+<<<<<<< HEAD
 
             UserEntity userEntity=new UserEntity();
             userEntity.setId(UUID.randomUUID().toString());
+=======
+            UserEntity userEntity=new UserEntity();
+>>>>>>> 68ad2bd... "修复部分bug"
             userEntity.setUser_name(jsonObject.get("user_name").toString());
             userEntity.setPass_word(bCryptPasswordEncoder.encode(jsonObject.get("pass_word").toString()));
             userEntity.setStudent_code(jsonObject.get("student_code").toString());
@@ -63,7 +67,11 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
+<<<<<<< HEAD
     public List<UserEntity> findUser(String id,String student_code,String student_name) {
+=======
+    public UserEntity findUser(String id,String student_code,String student_name) {
+>>>>>>> 68ad2bd... "修复部分bug"
         return userReposity.findone(id,student_code,student_name);
     }
 

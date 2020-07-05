@@ -75,7 +75,11 @@ public class FindController {
     }
 
     /**
+<<<<<<< HEAD
      * 查询某个人的所以实验信息
+=======
+     * 查询个人的所以实验信息
+>>>>>>> 68ad2bd... "修复部分bug"
      * @param request
      * @return
      */
@@ -100,4 +104,17 @@ public class FindController {
         String dataTime = (String) jsonResult.get("DateTime");
         return informationService.findselfInfOne(userName,dataTime);
     }
+<<<<<<< HEAD
+=======
+
+
+    @RequestMapping(value = "/api/admin/finduserinf",produces ={"application/json;charset=UTF-8"} )
+    @ResponseBody
+    public String finduserinf(@RequestBody String result){
+
+        JSONObject jsonResult = (JSONObject) JSON.parse(result);
+        String userName = (String) jsonResult.get("user_name");
+        return informationService.Adminfinduser(userName);
+    }
+>>>>>>> 68ad2bd... "修复部分bug"
 }

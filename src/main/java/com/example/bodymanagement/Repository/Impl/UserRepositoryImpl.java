@@ -5,10 +5,14 @@ import com.example.bodymanagement.Enum.ResultEnum;
 import com.example.bodymanagement.Enum.VO.ResultVO;
 import com.example.bodymanagement.Repository.UserReposity;
 import com.example.bodymanagement.entity.UserEntity;
+<<<<<<< HEAD
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> 68ad2bd... "修复部分bug"
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -16,7 +20,10 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 
+<<<<<<< HEAD
 import java.util.Iterator;
+=======
+>>>>>>> 68ad2bd... "修复部分bug"
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -32,7 +39,11 @@ public class UserRepositoryImpl implements UserReposity {
     }
 
     @Override
+<<<<<<< HEAD
     public List<UserEntity> findone(String id, String student_code, String student_name) {
+=======
+    public UserEntity findone(String id, String student_code, String student_name) {
+>>>>>>> 68ad2bd... "修复部分bug"
         Query query = new Query();
         Criteria criteria = new Criteria();
 
@@ -49,7 +60,11 @@ public class UserRepositoryImpl implements UserReposity {
             criteria.and("student_name").regex(String.valueOf(patternstudentName), "i");
         }
         query.addCriteria(criteria);
+<<<<<<< HEAD
         return mongoTemplate.find(query, UserEntity.class);
+=======
+        return mongoTemplate.findOne(query, UserEntity.class);
+>>>>>>> 68ad2bd... "修复部分bug"
     }
 
     @Override
