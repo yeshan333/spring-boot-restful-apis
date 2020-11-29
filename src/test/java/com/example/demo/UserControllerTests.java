@@ -1,79 +1,52 @@
 package com.example.demo;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import com.example.demo.controllers.UserController;
+import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.example.demo.models.User;
+import com.example.demo.models.UserMapper;
+
 import org.junit.jupiter.api.Test;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
-
+@SpringBootTest
 public class UserControllerTests {
 
-    private MockMvc mvc;
+	@Autowired
+	private UserMapper userMapper;
 
-    @BeforeEach
-    public void setUp() {
-        mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
-    }
+	@Test
+	@Rollback
+	public void testUserMapper() throws Exception {
+		// insert一条数据，并select出来验证
+		System.out.println("????");
+		userMapper.insert("AAA", 20);
+		System.out.println("????");
+		User u = userMapper.findByName("AAA");
+		assertEquals(20, u.getAge().intValue());
+		// update一条数据，并select出来验证
+		u.setAge(30);
+		userMapper.update(u);
+		u = userMapper.findByName("AAA");
+		assertEquals(30, u.getAge().intValue());
+		// 删除这条数据，并select验证
+		userMapper.delete(u.getId());
+		u = userMapper.findByName("AAA");
+		assertEquals(null, u);
+	}
 
-    @Test
-    public void testUserController() throws Exception {
-        // 测试UserController
-        RequestBuilder request;
-
-        // 1、get查一下user列表，应该为空
-        request = get("/users/");
-        mvc.perform(request)
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("[]")));
-
-        // 2、post提交一个user
-        request = post("/users/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\":1,\"name\":\"yeshan\",\"age\":20}");
-        mvc.perform(request)
-                .andExpect(content().string(equalTo("success")));
-
-        // 3、get获取user列表，应该有刚才插入的数据
-        request = get("/users/");
-        mvc.perform(request)
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("[{\"id\":1,\"name\":\"yeshan\",\"age\":20}]")));
-
-        // 4、put修改id为1的user
-        request = put("/users/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\":\"yeshan\",\"age\":30}");
-        mvc.perform(request)
-                .andExpect(content().string(equalTo("success")));
-
-        // 5、get一个id为1的user
-        request = get("/users/1");
-        mvc.perform(request)
-                .andExpect(content().string(equalTo("{\"id\":1,\"name\":\"yeshan\",\"age\":30}")));
-
-        // 6、del删除id为1的user
-        request = delete("/users/1");
-        mvc.perform(request)
-                .andExpect(content().string(equalTo("success")));
-
-        // 7、get查一下user列表，应该为空
-        request = get("/users/");
-        mvc.perform(request)
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("[]")));
-
-    }
+	@Test
+	@Rollback
+	public void testUserMapperFindAllUsers() throws Exception {
+		List<User> userList = userMapper.findAll();
+		for (User user : userList) {
+			assertEquals(null, user.getId());
+			assertNotEquals(null, user.getName());
+		}
+	}
 
 }
