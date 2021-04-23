@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"bodymanagement.admin"}],"uuid":"b822a2e8d1014e49a282cae9a22832b2"}

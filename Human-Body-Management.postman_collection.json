@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "19f7bbf2-481f-4fa0-956d-8e3ed730f50c",
+		"name": "Human-Body-Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UserLogin",
+			"item": [
+				{
+					"name": "super-admin-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": 123456\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin records",
+			"item": [
+				{
+					"name": "admin-latest record",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/findLatestInf/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"findLatestInf",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "admin-all-records",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTg5MTYyNDQsImlhdCI6MTYxODg1MTQ0NCwicm9sIjoiUm9sZV9BRE1JTiJ9.7VD4X0p4K-RgjxW3LqyO4pIIAtEatI3LSq30errgm5rARYh_7-qLLCsfot7va_RTPse6OvGZrFwQwf7VQFD1zg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user/findselfInf",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"findselfInf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users-Manage",
+			"item": [
+				{
+					"name": "Add-New-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTkyMjgxNDAsImlhdCI6MTYxOTE2MzM0MCwicm9sIjoiUm9sZV9BRE1JTiJ9.YtSAuqxtMz_4klc1AjVYgbPz8pEIWzIkoBamgd2fDNH-vG7zropzaw3jDM33ziwCspax1L5zA14vU38xkJeuhg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"125801\",\r\n    \"Id\": \"5251314\",\r\n    \"user_name\": \"yeshan3331\",\r\n    \"pass_word\": 125801,  \r\n    \"student_code\": 12580121,\r\n    \"student_name\": \"12580121\",\r\n    \"Role\": \"Role_ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/admin/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-a-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTkyMjgxNDAsImlhdCI6MTYxOTE2MzM0MCwicm9sIjoiUm9sZV9BRE1JTiJ9.YtSAuqxtMz_4klc1AjVYgbPz8pEIWzIkoBamgd2fDNH-vG7zropzaw3jDM33ziwCspax1L5zA14vU38xkJeuhg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"12580\",\r\n    \"user_name\": \"12580\",\r\n    \"pass_word\": \"12580\",\r\n    \"student_code\": \"1258012\",\r\n    \"student_name\": \"1258012\",\r\n    \"Role\": \"Role_ADMIN\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/admin/updateuser",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"updateuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-a-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTkyMjgxNDAsImlhdCI6MTYxOTE2MzM0MCwicm9sIjoiUm9sZV9BRE1JTiJ9.YtSAuqxtMz_4klc1AjVYgbPz8pEIWzIkoBamgd2fDNH-vG7zropzaw3jDM33ziwCspax1L5zA14vU38xkJeuhg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_name\": \"admin11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/admin/deleteUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"deleteUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get-All-Users-Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTkyMjgxNDAsImlhdCI6MTYxOTE2MzM0MCwicm9sIjoiUm9sZV9BRE1JTiJ9.YtSAuqxtMz_4klc1AjVYgbPz8pEIWzIkoBamgd2fDNH-vG7zropzaw3jDM33ziwCspax1L5zA14vU38xkJeuhg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/admin/findalluser",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"admin",
+						"findalluser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
