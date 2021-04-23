@@ -14,10 +14,12 @@ public interface UserReposity {
 
     UserEntity findone(String id, String student_code, String student_name);
 
-
+    // BUG: MongoDB ObjectID 删除有问题
     void deleteOneUserById(String id);
 
     void deleteMulUserById(String[] id);
+
+    void deleteOneUserByUserName(String username);
 
     boolean findOneUser(String user_name,String pass_word);
 

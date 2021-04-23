@@ -18,9 +18,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.regex.Pattern;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service("UserReposity")
 public class UserRepositoryImpl implements UserReposity {
 //    private static Logger logger = LoggerFactory.getLogger(InformantionRepositoryImpl.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(Query.class);
+
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -55,7 +62,23 @@ public class UserRepositoryImpl implements UserReposity {
 
     @Override
     public void deleteOneUserById(String id) {
-        Query query = new Query(Criteria.where("id").regex(id, "i"));
+        Query query = new Query(Criteria.where("user_name").regex(id, "u"));
+
+        // logger.warn("===============================================");
+        // logger.info(id);
+        // logger.warn("===============================================");
+
+        mongoTemplate.remove(query, UserEntity.class);
+    }
+
+    @Override
+    public void deleteOneUserByUserName(String username) {
+        Query query = new Query(Criteria.where("user_name").regex(username, "u"));
+
+        // logger.warn("===============================================");
+        // logger.info("delete username: "+username);
+        // logger.warn("===============================================");
+
         mongoTemplate.remove(query, UserEntity.class);
     }
 

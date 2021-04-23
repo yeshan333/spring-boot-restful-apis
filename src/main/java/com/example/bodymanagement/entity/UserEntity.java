@@ -18,11 +18,7 @@ public class UserEntity implements Serializable {
     //用户账号
     //主键
     @Id
-    /**
-     * 没做自增
-     * 随便用了UUID凑合
-     */
-    private String id;
+    private String id;      // * 没做自增 * 随便用了UUID凑合
     //登录账号
     private String user_name;
     //账号密码
@@ -38,6 +34,4 @@ public class UserEntity implements Serializable {
      * Role_USER 用户权限
      */
     private String Role;
-
-
 }

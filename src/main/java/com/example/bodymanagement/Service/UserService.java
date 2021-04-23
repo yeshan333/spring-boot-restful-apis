@@ -48,6 +48,8 @@ public interface UserService {
      */
     String deleteMulUserById(String[] id);
 
+    String deleteOneUserByUserName(String username);
+
     /**
      * 修改用户信息
      *

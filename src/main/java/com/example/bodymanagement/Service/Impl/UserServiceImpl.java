@@ -86,6 +86,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String deleteOneUserByUserName(String username) {
+        try {
+            userReposity.deleteOneUserByUserName(username);
+        }catch (Exception e){
+            return JSON.toJSONString(ResultVO.result(ResultEnum.FAILURE,false));
+        }
+        return JSON.toJSONString(ResultVO.result(ResultEnum.SUCCESS,true));
+    }
+
+    @Override
     public String UpdateUserById(String result) {
         JSONObject jsonResult = (JSONObject) JSON.parse(result);
         String id=(String) jsonResult.get("id");

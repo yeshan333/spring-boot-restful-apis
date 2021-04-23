@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -34,9 +33,10 @@ public class DeleteController {
      */
     @RequestMapping(value = "/api/admin/deleteUser",produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public String DeleteUser(@RequestBody String id){
-         JSONObject jsonObject = (JSONObject) JSON.parse(id);
-         String object = (String) jsonObject.get("id");
+    public String DeleteUser(@RequestBody String user_name){
+        JSONObject jsonObject = (JSONObject) JSON.parse(user_name);
+        String object = (String) jsonObject.get("user_name");
+        // return  userService.deleteOneUserById(object);
         return  userService.deleteOneUserById(object);
     }
 
