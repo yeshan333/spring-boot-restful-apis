@@ -18,7 +18,7 @@ mvn install  # 安装依赖
 2、Docker 启动 MongoDB
 
 ```bash
-docker run --rm -d  -p 27017:27017/tcp mongo:latest
+docker run --rm -d -p 27017:27017/tcp mongo:latest
 ```
 
 3、将数据导入到 MongoDB
@@ -30,7 +30,7 @@ docker run --rm -d  -p 27017:27017/tcp mongo:latest
 ```bash
 # eg：docker cp C:\Users\yeshan333\Desktop\HelloWorld\dbs\bodymanagement 11093e0e3f06:/home/dbs
 docker cp  database\bodymanagement <Container-ID>:/home/dbs  # 将数据源移动到 MongoDB 容器内
-docker exec -it <Container-ID>  # 进入 MongoDB docker 容器
+docker exec -it <Container-ID> bash # 进入 MongoDB docker 容器
 mongorestore -d bodymanagement /home/dbs  # 还原数据库
 ```
 

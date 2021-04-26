@@ -33,11 +33,24 @@ public class DeleteController {
      */
     @RequestMapping(value = "/api/admin/deleteUser",produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public String DeleteUser(@RequestBody String user_name){
+    public String DeleteUser(@RequestBody String id){
+         JSONObject jsonObject = (JSONObject) JSON.parse(id);
+         String object = (String) jsonObject.get("id");
+        return  userService.deleteOneUserById(object);
+    }
+
+    /**
+     * 根据 username 删除用户
+     * @param user_name
+     * @return
+     */
+    @RequestMapping(value = "/api/admin/deleteUserByName",produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public String DeleteUserByUsername(@RequestBody String user_name){
         JSONObject jsonObject = (JSONObject) JSON.parse(user_name);
         String object = (String) jsonObject.get("user_name");
         // return  userService.deleteOneUserById(object);
-        return  userService.deleteOneUserById(object);
+        return  userService.deleteOneUserByUserName(object);
     }
 
     /**

@@ -62,7 +62,7 @@ public class UserRepositoryImpl implements UserReposity {
 
     @Override
     public void deleteOneUserById(String id) {
-        Query query = new Query(Criteria.where("user_name").regex(id, "u"));
+        Query query = new Query(Criteria.where("id").is(id));
 
         // logger.warn("===============================================");
         // logger.info(id);

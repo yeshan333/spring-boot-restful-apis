@@ -181,14 +181,14 @@
 					"response": []
 				},
 				{
-					"name": "Delete-a-User",
+					"name": "Delete-a-User-By-id",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTkyMjgxNDAsImlhdCI6MTYxOTE2MzM0MCwicm9sIjoiUm9sZV9BRE1JTiJ9.YtSAuqxtMz_4klc1AjVYgbPz8pEIWzIkoBamgd2fDNH-vG7zropzaw3jDM33ziwCspax1L5zA14vU38xkJeuhg",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTk0OTM2MDcsImlhdCI6MTYxOTQyODgwNywicm9sIjoiUm9sZV9BRE1JTiJ9.vvWuzF59VlwWyHivgFOz8gmX50T84aoAAUUIAMQeuCQQkjIHCsAsGE5bwCqRbT8lWPPzOfhVAlsysOYrs0E68w",
 									"type": "string"
 								}
 							]
@@ -197,7 +197,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_name\": \"admin11\"\r\n}",
+							"raw": "{\r\n    \"id\": \"5f376ab00b72d70c44fd39e5\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,6 +218,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete-a-User-By-Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTk0OTM2MDcsImlhdCI6MTYxOTQyODgwNywicm9sIjoiUm9sZV9BRE1JTiJ9.vvWuzF59VlwWyHivgFOz8gmX50T84aoAAUUIAMQeuCQQkjIHCsAsGE5bwCqRbT8lWPPzOfhVAlsysOYrs0E68w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_name\": \"yeshan_admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/admin/deleteUserByName",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"deleteUserByName"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -229,7 +268,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTkyMjgxNDAsImlhdCI6MTYxOTE2MzM0MCwicm9sIjoiUm9sZV9BRE1JTiJ9.YtSAuqxtMz_4klc1AjVYgbPz8pEIWzIkoBamgd2fDNH-vG7zropzaw3jDM33ziwCspax1L5zA14vU38xkJeuhg",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImVjaGlzYW4iLCJleHAiOjE2MTk0OTM2MDcsImlhdCI6MTYxOTQyODgwNywicm9sIjoiUm9sZV9BRE1JTiJ9.vvWuzF59VlwWyHivgFOz8gmX50T84aoAAUUIAMQeuCQQkjIHCsAsGE5bwCqRbT8lWPPzOfhVAlsysOYrs0E68w",
 							"type": "string"
 						}
 					]
